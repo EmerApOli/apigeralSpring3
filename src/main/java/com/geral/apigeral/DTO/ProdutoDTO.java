@@ -10,8 +10,10 @@ import org.springframework.hateoas.server.core.Relation;
 @Relation(collectionRelation = "produtos")
 @Getter
 @Setter
-public class ProdutoDTO extends RepresentationModel<ProdutoDTO> {
+public class ProdutoDTO {
 
+
+     private  Integer id;
     private String nome;
 
     private String descricao;

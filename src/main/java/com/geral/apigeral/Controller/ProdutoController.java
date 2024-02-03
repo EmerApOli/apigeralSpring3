@@ -9,7 +9,6 @@ import java.util.List;
 import com.geral.apigeral.repository.ProdutoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import org.springframework.hateoas.CollectionModel;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,7 +26,7 @@ public class ProdutoController {
     @Autowired
     ModelAssemblerProduto modelAssemblerProduto;
     @GetMapping
-    public CollectionModel<ProdutoDTO> listar() {
+    public List<ProdutoDTO> listar() {
         List<Produto> produtos  =  produtoRepository.findAll();
 
 

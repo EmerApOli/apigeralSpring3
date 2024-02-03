@@ -7,21 +7,31 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.server.mvc.RepresentationModelAssemblerSupport;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Component
-public class ModelAssemblerProduto
-        extends  RepresentationModelAssemblerSupport<Produto, ProdutoDTO> {
+public class ModelAssemblerProduto {
 
     @Autowired
     private ModelMapper modelMapper;
-    public ModelAssemblerProduto() {
-        super(ProdutoController.class, ProdutoDTO.class);
+   // public ModelAssemblerProduto() {
+   //     super(ProdutoController.class, ProdutoDTO.class);
+   // }
+
+    //@Override
+    public ProdutoDTO toModel(Produto produto) {
+       // ProdutoDTO produtoDTO = createModelWithId(produto.getId(),produto);
+       return modelMapper.map(produto,ProdutoDTO.class);
+
+       // return  produtoDTO;
     }
 
-    @Override
-    public ProdutoDTO toModel(Produto produto) {
-        ProdutoDTO produtoDTO = createModelWithId(produto.getId(),produto);
-        modelMapper.map(produto,produtoDTO);
+    public List<ProdutoDTO> toCollectionModel(List<Produto> produtos){
 
-        return  produtoDTO;
+         return  produtos.stream().map(restaurante->toModel(restaurante)).collect(Collectors.toList());
+
+
+
     }
 }

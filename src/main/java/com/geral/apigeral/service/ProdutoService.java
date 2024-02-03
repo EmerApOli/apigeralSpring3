@@ -9,20 +9,4 @@ import org.springframework.stereotype.Service;
 
 public class ProdutoService {
 
-    @Service
-    public class CadastroProdutoService {
-
-        @Autowired
-        private ProdutoRepository produtoRepository;
-
-        @Transactional
-        public Produto salvar(Produto produto) {
-            return produtoRepository.save(produto);
-        }
-
-      //  public Produto buscarOuFalhar(Long produtoId) {
-      //      return produtoRepository.findById(produtoId)
-                  //  .orElseThrow(() -> new ProdutoNaoEncotradoException(produtoId));
-      //  }
-
-    }}
+    }

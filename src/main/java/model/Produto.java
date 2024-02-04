@@ -1,4 +1,4 @@
-package com.geral.apigeral.model;
+package model;
 
 import java.math.BigDecimal;
 
@@ -34,8 +34,6 @@ public class Produto {
 
     @Column(nullable = false)
     private Boolean ativo;
-
-
 
 
 

@@ -29,7 +29,7 @@ public class ModelAssemblerProduto {
 
     public List<ProdutoDTO> toCollectionModel(List<Produto> produtos){
 
-         return  produtos.stream().map(restaurante->toModel(restaurante)).collect(Collectors.toList());
+         return  produtos.stream().map(produto->toModel(produto)).collect(Collectors.toList());
 
 
 

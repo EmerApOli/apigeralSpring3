@@ -1,4 +1,4 @@
-package com.geral.apigeral.model.input;
+package model;
 
 import jakarta.persistence.Column;
 

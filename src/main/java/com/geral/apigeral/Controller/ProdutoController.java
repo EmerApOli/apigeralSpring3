@@ -57,6 +57,16 @@ public class ProdutoController {
         return modelAssemblerProduto.toModel(produto);
     }
 
+    @PutMapping("/{produtoId}")
+    public ProdutoDTO atualizar(@PathVariable Long produtoId,
+                                  @RequestBody @Valid ProdutoInput produtoInput) {
+        Produto produtoAtual = cadastroProdutoService.buscarOuFalhar(produtoId);
+        produtoInputDisassembler.copyToDomainObject(produtoInput, produtoAtual);
+        produtoAtual = cadastroProdutoService.salvar(produtoAtual);
+
+        return modelAssemblerProduto.toModel(produtoAtual);
+    }
+
 
     //@Override
     @DeleteMapping("/{id}")

@@ -61,12 +61,26 @@ public class UsuarioController {
     }
 
 
+    @PutMapping("/{produtoId}")
+    public UsuarioDTO atualizar(@PathVariable Long produtoId,
+                                @RequestBody @Valid UsuarioInput usuarioInput) {
+        Usuario usuarioAtual = cadastroUsuarioService.buscarOuFalhar(produtoId);
+        usuarioInputDisassembler.copyToDomainObject(usuarioInput, usuarioAtual);
+        usuarioAtual = cadastroUsuarioService.salvar(usuarioAtual);
+
+        return modelAssemblerUsuario.toModel(usuarioAtual);
+    }
+
+
     //@Override
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void remover(@PathVariable Long id) {
         cadastroUsuarioService.excluir(id);
     }
+
+
+
 
 }
 

@@ -1,6 +1,8 @@
 package com.geral.apigeral.cadastroservice;
 
 
+import com.geral.apigeral.exception.ProdutoNaoEncotradoException;
+import com.geral.apigeral.model.Produto;
 import com.geral.apigeral.model.Usuario;
 import com.geral.apigeral.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,5 +35,10 @@ public class CadastroUsuarioService {
 
 		}
 
-	
-}
+	public Usuario buscarOuFalhar(Long usuarioId) {
+		return  usuarioRepository.findById(usuarioId)
+				.orElseThrow(() -> new ProdutoNaoEncotradoException(usuarioId));
+
+
+
+	}}
